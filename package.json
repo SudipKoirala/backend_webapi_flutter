@@ -5,7 +5,7 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "test": "jest --runInBand"
+    "test": "jest --verbose --detectOpenHandles --runInBand"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

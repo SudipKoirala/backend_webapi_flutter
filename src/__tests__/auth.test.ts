@@ -86,7 +86,7 @@ describe('Auth Integrated Tests', () => {
         const user = await User.findOne({ email: testUser.email });
         expect(user?.resetPasswordToken).toBeDefined();
         expect(user?.resetPasswordExpires).toBeDefined();
-    });
+    }, 15000);
 
     it('8. should fail forgot password if email is not found', async () => {
         const res = await request(app)

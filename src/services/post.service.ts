@@ -74,7 +74,7 @@ export const addComment = async (postId: string, authorId: string, content: stri
 
     const updated = await Post.findById(postId).populate('comments.author', '_id username image');
     const comment = updated?.comments[updated.comments.length - 1];
-    return comment ? comment.toObject ? comment.toObject() : comment : null;
+    return comment ? (comment as any).toObject ? (comment as any).toObject() : comment : null;
 };
 
 export const getComments = async (postId: string) => {
