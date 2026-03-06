@@ -1,0 +1,15 @@
+import { Router } from 'express';
+import * as AuthController from '../controllers/auth.controller';
+import { authenticate } from '../middleware/auth.middleware';
+import { uploadImage } from '../middleware/upload.middleware';
+
+const router = Router();
+
+router.post('/register', AuthController.register);
+router.post('/login', AuthController.login);
+router.post('/forgot-password', AuthController.forgotPassword);
+router.post('/reset-password', AuthController.resetPassword);
+router.get('/me', authenticate, AuthController.getMe);
+router.put('/:id', authenticate, uploadImage.single('image'), AuthController.updateProfile);
+
+export default router;
